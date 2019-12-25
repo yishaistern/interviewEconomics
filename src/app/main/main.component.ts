@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { RowData } from '../models';
 
 @Component({
   selector: 'app-main',
@@ -9,11 +10,11 @@ import { HttpClient } from '@angular/common/http';
 export class MainComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
-
+  mainArr: RowData[] = [];
   ngOnInit() {
-    this.http.get('./assets/csvjson.json').subscribe(data => {
-      console.log(data);
-    })
+    this.http.get('./assets/csvjson.json').subscribe((data: RowData[]) => {
+      this.mainArr = (data);
+    });
   }
 
 }
