@@ -1,4 +1,6 @@
 <div class="container">
+  <h1>My Products</h1>
+  <h6 class="m_bottom">all prices are in dollars</h6>
   <div class="filters">
     <div class="form-group first-filter">
       <label for="exampleFormControlSelect1">Sort By</label>
@@ -15,7 +17,7 @@
     </div>
     <div class="form-group first-filter">
       <label for="exampleFormControlSelect1">Sorting direction</label>
-      <select class="form-control" id="exampleFormControlSelect1" (change)="pickDirection($event.target.value)">
+      <select [disabled]="!filter.sortBy" class="form-control" id="exampleFormControlSelect1" (change)="pickDirection($event.target.value)">
         <option value=""></option>
         <option value="true">Ascending</option>
         <option value="fales">Descending</option>
@@ -31,7 +33,7 @@
     </div>
     <div class="form-group first-filter">
       <label for="exampleFormControlInput1">filter Input</label>
-      <input type="email" [(ngModel)]="filter.input" class="form-control" id="exampleFormControlInput1" placeholder="filter key">
+      <input [disabled]="!filter.filterBy" type="email" [(ngModel)]="filter.input" class="form-control" id="exampleFormControlInput1" placeholder="filter key">
     </div>
   </div>
   <div class="single-row main-row">

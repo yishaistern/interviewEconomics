@@ -27,7 +27,6 @@ export class MainComponent implements OnInit {
   } 
   pickSort($event) {
     this.filter.sortBy = $event;
-    console.log($event);
   }
   pickDirection($event) {
     if ($event) {
