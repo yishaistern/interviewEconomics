@@ -23,8 +23,8 @@ export class MainComponent implements OnInit {
     });
   }
   pickfilter($event) {
-    console.log($event);
-  }
+    this.filter.filterBy = $event;
+  } 
   pickSort($event) {
     this.filter.sortBy = $event;
     console.log($event);

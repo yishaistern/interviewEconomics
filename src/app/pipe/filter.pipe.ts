@@ -36,7 +36,10 @@ export class MyFilterPipe implements PipeTransform {
         }
         if (filter.filterBy && filter.input) {
             const input = filter.input.toLocaleLowerCase();
-            arr = arr.filter(item => item[filter.filterBy].toLocaleLowerCase().indexOf(input) !== -1);
+            arr = arr.filter(item => {
+                console.log(item, filter.filterBy);
+                return item[filter.filterBy].toLocaleLowerCase().indexOf(input) !== -1;
+            } );
         }
         // filter items array, items which match and return true will be
         // kept, false will be filtered out
