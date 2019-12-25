@@ -1,16 +1,60 @@
 <div class="container">
   <div class="filters">
-    <div class="form-group">
-      <label for="exampleFormControlSelect1">Example select</label>
-      <select class="form-control" id="exampleFormControlSelect1">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
+    <div class="form-group first-filter">
+      <label for="exampleFormControlSelect1">Sort By</label>
+      <select class="form-control" id="exampleFormControlSelect1" (change)="pickSort($event.target.value)">
+        <option value=""></option>
+        <option value="Country">Country</option>
+        <option value="Product">Product</option>
+        <option value="Discounts">Discounts</option>
+        <option value="Sales">Sales</option>
+        <option value="COGS">COGS</option>
+        <option value="Profit">Profit</option>
+        <option value="Profit">Date</option>
       </select>
     </div>
+    <div class="form-group first-filter">
+      <label for="exampleFormControlSelect1">Sorting direction</label>
+      <select class="form-control" id="exampleFormControlSelect1" (change)="pickDirection($event.target.value)">
+        <option value=""></option>
+        <option value="true">Ascending</option>
+        <option value="fales">Descending</option>
+      </select>
+    </div>
+    <div class="form-group first-filter">
+      <label for="exampleFormControlSelect1">filter By</label>
+      <select class="form-control" id="exampleFormControlSelect1" (change)="pickfilter($event.target.value)">
+        <option value=""></option>
+        <option value="true">Ascending</option>
+        <option value="false">Descending</option>
+      </select>
+    </div>
+    <div class="form-group first-filter">
+      <label for="exampleFormControlInput1">filter Input</label>
+      <input type="email" [(ngModel)]="filter.input" class="form-control" id="exampleFormControlInput1" placeholder="filter key">
+    </div>
   </div>
-  <div class="single-row"></div>
-  <div class="main-table"></div>
+  <div class="single-row main-row">
+    <div>Product</div>
+    <div>Country</div>
+    <div>Manufacturing Price</div>
+    <div>Sale Price</div>
+    <div>Discounts</div>
+    <div>Sales</div>
+    <div>COGS</div>
+    <div>Profit</div>
+    <div>Date</div>
+  </div>
+  <div class="main-table">
+    <div class="single-row row-data" *ngFor="let item of mainArr | myfilter:filter">
+      <div>{{item.Product}}</div>
+      <div>{{item.Country}}</div>
+      <div>{{item.Manufacturing_Price}}</div>
+      <div>{{item.Sale_Price}}</div>
+      <div>{{item.Discounts ? item.Discounts : 'none'}}</div>
+      <div>{{item.Sales}}</div>
+      <div>{{item.COGS}}</div>
+      <div>{{item.Profit}}</div>
+      <div>{{item.Date}}</div>
+    </div>
 </div>

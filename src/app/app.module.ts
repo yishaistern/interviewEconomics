@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './main/main.component';
+import { MyFilterPipe } from './pipe/filter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    MyFilterPipe,
   ],
   imports: [
     BrowserModule,

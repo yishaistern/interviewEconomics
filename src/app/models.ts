@@ -16,3 +16,10 @@ export interface RowData {
     Month_Name: string;
     Year: number;
 }
+
+export interface HowToFilter {
+    sortBy: string;
+    filterBy: string;
+    input: string;
+    ascending: boolean;
+}
