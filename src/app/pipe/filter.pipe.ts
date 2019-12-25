@@ -11,6 +11,12 @@ export class MyFilterPipe implements PipeTransform {
             return items;
         }
         let arr = items;
+        if (filter.filterBy && filter.input) {
+            const input = filter.input.toLocaleLowerCase();
+            arr = arr.filter(item => {
+                return item[filter.filterBy].toLocaleLowerCase().indexOf(input) !== -1;
+            } );
+        }
         if (filter.sortBy) {
             if (filter.ascending === true) {
                 arr  = arr.sort((a: RowData, b: RowData) => {
@@ -34,12 +40,7 @@ export class MyFilterPipe implements PipeTransform {
                   });
               }
         }
-        if (filter.filterBy && filter.input) {
-            const input = filter.input.toLocaleLowerCase();
-            arr = arr.filter(item => {
-                return item[filter.filterBy].toLocaleLowerCase().indexOf(input) !== -1;
-            } );
-        }
+        
         // filter items array, items which match and return true will be
         // kept, false will be filtered out
         return arr;
